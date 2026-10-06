@@ -36,15 +36,25 @@
         <h1>Wei Xu</h1>
         <p class="role">Ph.D. Student in Applied Physics<br>California Institute of Technology<br>Pasadena, CA</p>
         <nav class="links" aria-label="Profiles">
-          <!-- Address is assembled by script below to keep it away from simple scrapers. -->
+          <!-- Address is assembled by assets/main.js to keep it away from simple scrapers. -->
           <a class="email" href="#" data-user="wxu3" data-domain="caltech.edu">Email</a>
           <a href="https://scholar.google.com/citations?user=U3ncA_IAAAAJ">Google Scholar</a>
         </nav>
       </div>
+      <!-- Section navigation, shown in the sidebar on wide screens. -->
+      <nav class="toc" aria-label="Sections">
+        <a href="#about">About</a>
+        <a href="#interests">Research Interests</a>
+        <a href="#news">News</a>
+        <a href="#publications">Publications</a>
+        <a href="#experience">Research Experience</a>
+        <a href="#education">Education</a>
+        <a href="#honors">Honors &amp; Awards</a>
+      </nav>
     </header>
 
     <div class="content">
-    <!-- Decorative soliton-comb spectrum, drawn by the script at the bottom. -->
+    <!-- Decorative soliton-comb spectrum, drawn by assets/main.js. -->
     <svg class="comb" aria-hidden="true" focusable="false"></svg>
 
     <!-- ============ ABOUT ============ -->
@@ -93,22 +103,31 @@
       <h2>Publications</h2>
       <ol class="pubs">
         <li>
-          <a class="pub-title" href="https://doi.org/10.1038/s41586-026-10815-x">Family of magnetic field-boosted superconductors in rhombohedral graphene</a>
-          <div class="pub-authors">J. Seo, A. A. Cotten, S. Ye, …, <strong>W. Xu</strong>, …, D. M. Zumbühl, L. Ju</div>
-          <div class="pub-venue"><em>Nature</em> 656, 60–66 (2026)</div>
-          <div class="pub-links"><a href="https://doi.org/10.1038/s41586-026-10815-x">Paper</a></div>
+          <img class="pub-thumb" src="assets/thumb-rhombohedral.svg" alt="" width="160" height="120" loading="lazy">
+          <div>
+            <a class="pub-title" href="https://doi.org/10.1038/s41586-026-10815-x">Family of magnetic field-boosted superconductors in rhombohedral graphene</a>
+            <div class="pub-authors">J. Seo, A. A. Cotten, S. Ye, …, <strong>W. Xu</strong>, …, D. M. Zumbühl, L. Ju</div>
+            <div class="pub-venue"><em>Nature</em> 656, 60–66 (2026)</div>
+            <div class="pub-links"><a href="https://doi.org/10.1038/s41586-026-10815-x">Paper</a></div>
+          </div>
         </li>
         <li>
-          <a class="pub-title" href="https://doi.org/10.1038/s41586-025-09169-7">Signatures of chiral superconductivity in rhombohedral graphene</a>
-          <div class="pub-authors">T. Han, Z. Lu, Z. Hadjri, L. Shi, Z. Wu, <strong>W. Xu</strong>, …, L. Fu, L. Ju</div>
-          <div class="pub-venue"><em>Nature</em> 643, 654–661 (2025)</div>
-          <div class="pub-links"><a href="https://doi.org/10.1038/s41586-025-09169-7">Paper</a><a href="https://arxiv.org/abs/2408.15233">arXiv</a></div>
+          <img class="pub-thumb" src="assets/thumb-chiral.svg" alt="" width="160" height="120" loading="lazy">
+          <div>
+            <a class="pub-title" href="https://doi.org/10.1038/s41586-025-09169-7">Signatures of chiral superconductivity in rhombohedral graphene</a>
+            <div class="pub-authors">T. Han, Z. Lu, Z. Hadjri, L. Shi, Z. Wu, <strong>W. Xu</strong>, …, L. Fu, L. Ju</div>
+            <div class="pub-venue"><em>Nature</em> 643, 654–661 (2025)</div>
+            <div class="pub-links"><a href="https://doi.org/10.1038/s41586-025-09169-7">Paper</a><a href="https://arxiv.org/abs/2408.15233">arXiv</a></div>
+          </div>
         </li>
         <li>
-          <a class="pub-title" href="https://doi.org/10.1021/acs.nanolett.3c03604">Ballistic PbTe nanowire devices</a>
-          <div class="pub-authors">Y. Wang, F. Chen, W. Song, …, <strong>W. Xu</strong>, …, K. He, H. Zhang</div>
-          <div class="pub-venue"><em>Nano Letters</em> 23, 11137–11144 (2023)</div>
-          <div class="pub-links"><a href="https://doi.org/10.1021/acs.nanolett.3c03604">Paper</a></div>
+          <img class="pub-thumb" src="assets/thumb-conductance.svg" alt="" width="160" height="120" loading="lazy">
+          <div>
+            <a class="pub-title" href="https://doi.org/10.1021/acs.nanolett.3c03604">Ballistic PbTe nanowire devices</a>
+            <div class="pub-authors">Y. Wang, F. Chen, W. Song, …, <strong>W. Xu</strong>, …, K. He, H. Zhang</div>
+            <div class="pub-venue"><em>Nano Letters</em> 23, 11137–11144 (2023)</div>
+            <div class="pub-links"><a href="https://doi.org/10.1021/acs.nanolett.3c03604">Paper</a></div>
+          </div>
         </li>
       </ol>
     </section>
@@ -181,45 +200,6 @@
     </div>
   </main>
 
-  <script>
-    // Soliton microcomb spectrum: sech^2 envelope on a dB scale, with the pump line on top.
-    (function () {
-      var svg = document.querySelector(".comb");
-      var ns = "http://www.w3.org/2000/svg";
-      var N = 61, W = 740, H = 88, mid = (N - 1) / 2;
-      var width = 5, range = 50; // envelope width in lines, plotted dynamic range in dB
-      svg.setAttribute("viewBox", "0 0 " + W + " " + H);
-      svg.innerHTML =
-        '<defs><linearGradient id="comb-fill" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="' + W + '" y2="0">' +
-        '<stop offset="0" stop-color="#4f8df5"/><stop offset="1" stop-color="#7a5af5"/></linearGradient></defs>';
-      for (var i = 0; i < N; i++) {
-        var sech = 1 / Math.cosh((i - mid) / width);
-        var dB = 20 * Math.log10(sech);
-        var h = i === mid ? H : Math.max(3, 0.8 * H * (1 + dB / range));
-        var r = document.createElementNS(ns, "rect");
-        r.setAttribute("x", ((i + 0.5) * W / N - 1.25).toFixed(1));
-        r.setAttribute("y", (H - h).toFixed(1));
-        r.setAttribute("width", 2.5);
-        r.setAttribute("height", h.toFixed(1));
-        r.setAttribute("rx", 1.25);
-        if (i === mid) r.setAttribute("class", "pump");
-        r.style.animationDelay = Math.abs(i - mid) * 22 + "ms";
-        svg.appendChild(r);
-      }
-    })();
-
-    document.querySelectorAll("a.email").forEach(function (a) {
-      a.href = "mailto:" + a.dataset.user + "@" + a.dataset.domain;
-    });
-
-    document.querySelector(".theme-toggle").addEventListener("click", function () {
-      var root = document.documentElement;
-      var current = root.dataset.theme ||
-        (matchMedia("(prefers-color-scheme: dark)").matches ? "dark" : "light");
-      var next = current === "dark" ? "light" : "dark";
-      root.dataset.theme = next;
-      localStorage.setItem("theme", next);
-    });
-  </script>
+  <script src="assets/main.js"></script>
 </body>
 </html>
