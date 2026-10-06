@@ -1,0 +1,239 @@
+/* ---------- Theme ---------- */
+:root {
+  --bg: #ffffff;
+  --fg: #1d1f23;
+  --muted: #646a73;
+  --faint: #7a8089;
+  --border: #e6e8eb;
+  --card: #f6f7f9;
+  --card-hover: #eef1f5;
+  --accent: #1a5fd0;
+  --accent-soft: #e8f0fd;
+  color-scheme: light;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --bg: #111317;
+    --fg: #e4e6ea;
+    --muted: #a0a6af;
+    --faint: #848a93;
+    --border: #262a31;
+    --card: #181b20;
+    --card-hover: #1f232a;
+    --accent: #7cacf8;
+    --accent-soft: #1b2a42;
+    color-scheme: dark;
+  }
+}
+
+:root[data-theme="dark"] {
+  --bg: #111317;
+  --fg: #e4e6ea;
+  --muted: #a0a6af;
+  --faint: #848a93;
+  --border: #262a31;
+  --card: #181b20;
+  --card-hover: #1f232a;
+  --accent: #7cacf8;
+  --accent-soft: #1b2a42;
+  color-scheme: dark;
+}
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after { box-sizing: border-box; }
+
+html { -webkit-text-size-adjust: 100%; }
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--fg);
+  font: 17px/1.65 -apple-system, BlinkMacSystemFont, "Segoe UI", "Inter", "Helvetica Neue", Arial, sans-serif;
+  -webkit-font-smoothing: antialiased;
+  transition: background-color 0.2s, color 0.2s;
+}
+
+main {
+  max-width: 740px;
+  margin: 0 auto;
+  padding: 88px 24px 48px;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+a:hover { text-decoration: underline; text-underline-offset: 3px; }
+
+h1, h2, h3 { line-height: 1.25; }
+
+.muted { color: var(--muted); }
+
+/* ---------- Theme toggle ---------- */
+.theme-toggle {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  width: 38px;
+  height: 38px;
+  display: grid;
+  place-items: center;
+  border: 1px solid var(--border);
+  border-radius: 50%;
+  background: var(--bg);
+  color: var(--muted);
+  cursor: pointer;
+  transition: color 0.2s, border-color 0.2s;
+}
+.theme-toggle:hover { color: var(--fg); border-color: var(--faint); }
+
+/* ---------- Header ---------- */
+.intro {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  margin-bottom: 56px;
+}
+
+.avatar {
+  flex: none;
+  width: 132px;
+  height: 132px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 1px solid var(--border);
+}
+
+.intro h1 {
+  margin: 0 0 4px;
+  font-size: 2.1rem;
+  font-weight: 700;
+  letter-spacing: -0.02em;
+}
+
+.role {
+  margin: 0 0 14px;
+  color: var(--muted);
+}
+
+.links {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 18px;
+  font-size: 0.95rem;
+  font-weight: 500;
+}
+
+/* ---------- Sections ---------- */
+section { margin-bottom: 48px; }
+
+section h2 {
+  margin: 0 0 18px;
+  padding-bottom: 8px;
+  border-bottom: 1px solid var(--border);
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+section p { margin: 0 0 14px; }
+
+ul, ol { margin: 0; padding: 0; list-style: none; }
+
+/* Interests */
+.tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+.tags li {
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent-soft);
+  color: var(--accent);
+  font-size: 0.88rem;
+  font-weight: 500;
+}
+
+/* Publications */
+.pubs li { margin-bottom: 22px; }
+.pubs li:last-child { margin-bottom: 0; }
+
+.pub-title {
+  color: var(--fg);
+  font-weight: 600;
+}
+.pub-title:hover { color: var(--accent); }
+
+.pub-authors,
+.pub-venue {
+  color: var(--muted);
+  font-size: 0.93rem;
+}
+.pub-authors strong { color: var(--fg); font-weight: 600; }
+
+.pub-links {
+  display: flex;
+  gap: 8px;
+  margin-top: 6px;
+}
+.pub-links a {
+  padding: 1px 9px;
+  border: 1px solid var(--border);
+  border-radius: 6px;
+  font-size: 0.78rem;
+  font-weight: 500;
+  color: var(--muted);
+}
+.pub-links a:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+  text-decoration: none;
+}
+
+/* Experience / Education / Honors */
+.timeline li {
+  display: flex;
+  justify-content: space-between;
+  align-items: baseline;
+  gap: 16px;
+  padding: 8px 0;
+}
+.timeline li + li { border-top: 1px dashed var(--border); }
+.years {
+  flex: none;
+  color: var(--faint);
+  font-size: 0.9rem;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Footer */
+footer {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 72px;
+  padding-top: 18px;
+  border-top: 1px solid var(--border);
+  color: var(--faint);
+  font-size: 0.85rem;
+}
+
+/* ---------- Small screens ---------- */
+@media (max-width: 600px) {
+  body { font-size: 16px; }
+  main { padding-top: 72px; }
+  .intro {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 20px;
+    margin-bottom: 44px;
+  }
+  .avatar { width: 108px; height: 108px; }
+  .timeline li { flex-direction: column; gap: 2px; }
+  footer { flex-direction: column; gap: 4px; }
+}
