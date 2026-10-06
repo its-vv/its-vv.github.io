@@ -71,6 +71,7 @@ a:hover { text-decoration: underline; text-underline-offset: 3px; }
 h1, h2, h3 { line-height: 1.25; }
 
 .muted { color: var(--muted); }
+.nowrap { white-space: nowrap; }
 
 /* ---------- Theme toggle ---------- */
 .theme-toggle {
@@ -95,7 +96,27 @@ h1, h2, h3 { line-height: 1.25; }
   display: flex;
   align-items: center;
   gap: 32px;
-  margin-bottom: 56px;
+  margin-bottom: 40px;
+}
+
+/* Frequency-comb divider */
+.comb {
+  display: block;
+  width: 100%;
+  height: auto;
+  margin-bottom: 44px;
+}
+.comb rect {
+  fill: url(#comb-fill);
+  opacity: 0.85;
+  transform-box: fill-box;
+  transform-origin: bottom;
+  animation: comb-grow 0.7s cubic-bezier(0.2, 0.7, 0.2, 1) both;
+}
+.comb rect.pump { fill: var(--fg); opacity: 0.7; }
+@keyframes comb-grow { from { transform: scaleY(0); } }
+@media (prefers-reduced-motion: reduce) {
+  .comb rect { animation: none; }
 }
 
 .avatar {
@@ -108,15 +129,17 @@ h1, h2, h3 { line-height: 1.25; }
 }
 
 .intro h1 {
-  margin: 0 0 4px;
-  font-size: 2.1rem;
-  font-weight: 700;
-  letter-spacing: -0.02em;
+  margin: 0 0 6px;
+  font-family: "Iowan Old Style", "Palatino Linotype", Palatino, Charter, Georgia, serif;
+  font-size: 2.5rem;
+  font-weight: 600;
+  letter-spacing: -0.01em;
 }
 
 .role {
   margin: 0 0 14px;
   color: var(--muted);
+  line-height: 1.5;
 }
 
 .links {
@@ -234,6 +257,8 @@ footer {
     margin-bottom: 44px;
   }
   .avatar { width: 108px; height: 108px; }
+  .intro h1 { font-size: 2.2rem; }
+  .comb { margin-bottom: 40px; }
   .timeline li { flex-direction: column; gap: 2px; }
   footer { flex-direction: column; gap: 4px; }
 }

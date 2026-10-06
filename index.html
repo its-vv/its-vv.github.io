@@ -5,6 +5,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Wei Xu · Caltech Applied Physics</title>
   <meta name="description" content="Wei Xu, Ph.D. student in Applied Physics at Caltech, working on integrated photonics and microresonator frequency combs.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://its-vv.github.io/">
+  <meta property="og:title" content="Wei Xu · Caltech Applied Physics">
+  <meta property="og:description" content="Ph.D. student in Applied Physics at Caltech, working on integrated photonics and microresonator frequency combs.">
+  <meta name="twitter:card" content="summary">
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="stylesheet" href="assets/style.css">
   <script>
@@ -30,13 +35,16 @@
       <img class="avatar" src="assets/avatar.svg" alt="Wei Xu" width="132" height="132">
       <div>
         <h1>Wei Xu</h1>
-        <p class="role">Ph.D. Student in Applied Physics · Caltech</p>
+        <p class="role">Ph.D. Student in Applied Physics<br>California Institute of Technology · <span class="nowrap">Pasadena, CA</span></p>
         <nav class="links" aria-label="Profiles">
           <!-- Address is assembled by script below to keep it away from simple scrapers. -->
           <a class="email" href="#" data-user="wxu3" data-domain="caltech.edu">Email</a>
         </nav>
       </div>
     </header>
+
+    <!-- Decorative soliton-comb spectrum, drawn by the script at the bottom. -->
+    <svg class="comb" aria-hidden="true" focusable="false"></svg>
 
     <!-- ============ ABOUT ============ -->
     <section id="about">
@@ -163,6 +171,32 @@
   </main>
 
   <script>
+    // Soliton microcomb spectrum: sech^2 envelope on a dB scale, with the pump line on top.
+    (function () {
+      var svg = document.querySelector(".comb");
+      var ns = "http://www.w3.org/2000/svg";
+      var N = 61, W = 740, H = 88, mid = (N - 1) / 2;
+      var width = 5, range = 50; // envelope width in lines, plotted dynamic range in dB
+      svg.setAttribute("viewBox", "0 0 " + W + " " + H);
+      svg.innerHTML =
+        '<defs><linearGradient id="comb-fill" gradientUnits="userSpaceOnUse" x1="0" y1="0" x2="' + W + '" y2="0">' +
+        '<stop offset="0" stop-color="#4f8df5"/><stop offset="1" stop-color="#7a5af5"/></linearGradient></defs>';
+      for (var i = 0; i < N; i++) {
+        var sech = 1 / Math.cosh((i - mid) / width);
+        var dB = 20 * Math.log10(sech);
+        var h = i === mid ? H : Math.max(3, 0.8 * H * (1 + dB / range));
+        var r = document.createElementNS(ns, "rect");
+        r.setAttribute("x", ((i + 0.5) * W / N - 1.25).toFixed(1));
+        r.setAttribute("y", (H - h).toFixed(1));
+        r.setAttribute("width", 2.5);
+        r.setAttribute("height", h.toFixed(1));
+        r.setAttribute("rx", 1.25);
+        if (i === mid) r.setAttribute("class", "pump");
+        r.style.animationDelay = Math.abs(i - mid) * 22 + "ms";
+        svg.appendChild(r);
+      }
+    })();
+
     document.querySelectorAll("a.email").forEach(function (a) {
       a.href = "mailto:" + a.dataset.user + "@" + a.dataset.domain;
     });
