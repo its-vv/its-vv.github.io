@@ -31,18 +31,19 @@
   <main>
     <!-- ============ HEADER ============ -->
     <header class="intro">
-      <!-- Replace assets/avatar.svg with your photo, e.g. assets/photo.jpg -->
-      <img class="avatar" src="assets/avatar.svg" alt="Wei Xu" width="132" height="132">
+      <img class="avatar" src="assets/photo.jpg" alt="Wei Xu" width="132" height="132">
       <div>
         <h1>Wei Xu</h1>
-        <p class="role">Ph.D. Student in Applied Physics<br>California Institute of Technology · <span class="nowrap">Pasadena, CA</span></p>
+        <p class="role">Ph.D. Student in Applied Physics<br>California Institute of Technology<br>Pasadena, CA</p>
         <nav class="links" aria-label="Profiles">
           <!-- Address is assembled by script below to keep it away from simple scrapers. -->
           <a class="email" href="#" data-user="wxu3" data-domain="caltech.edu">Email</a>
+          <a href="https://scholar.google.com/citations?user=U3ncA_IAAAAJ">Google Scholar</a>
         </nav>
       </div>
     </header>
 
+    <div class="content">
     <!-- Decorative soliton-comb spectrum, drawn by the script at the bottom. -->
     <svg class="comb" aria-hidden="true" focusable="false"></svg>
 
@@ -74,6 +75,19 @@
       </ul>
     </section>
 
+    <!-- ============ NEWS ============ -->
+    <section id="news">
+      <h2>News</h2>
+      <ul class="news">
+        <li><time datetime="2026-06">Jun 2026</time><span>Our paper on magnetic field-boosted superconductors in rhombohedral graphene is out in <em>Nature</em>.</span></li>
+        <li><time datetime="2026-06">Jun 2026</time><span>Received my M.S. in Applied Physics from Caltech.</span></li>
+        <li><time datetime="2026-04">Apr 2026</time><span>Joined <a href="https://www.vahala.caltech.edu/">Prof. Kerry Vahala's group</a> at Caltech.</span></li>
+        <li><time datetime="2025-09">Sep 2025</time><span>Started my Ph.D. in Applied Physics at Caltech.</span></li>
+        <li><time datetime="2025-06">Jun 2025</time><span>Graduated from Tsinghua University with the Honors Degree Special Award.</span></li>
+        <li><time datetime="2025-05">May 2025</time><span>Our paper on chiral superconductivity in rhombohedral graphene is out in <em>Nature</em>.</span></li>
+      </ul>
+    </section>
+
     <!-- ============ PUBLICATIONS ============ -->
     <section id="publications">
       <h2>Publications</h2>
@@ -81,7 +95,7 @@
         <li>
           <a class="pub-title" href="https://doi.org/10.1038/s41586-026-10815-x">Family of magnetic field-boosted superconductors in rhombohedral graphene</a>
           <div class="pub-authors">J. Seo, A. A. Cotten, S. Ye, …, <strong>W. Xu</strong>, …, D. M. Zumbühl, L. Ju</div>
-          <div class="pub-venue"><em>Nature</em> (2026)</div>
+          <div class="pub-venue"><em>Nature</em> 656, 60–66 (2026)</div>
           <div class="pub-links"><a href="https://doi.org/10.1038/s41586-026-10815-x">Paper</a></div>
         </li>
         <li>
@@ -157,10 +171,6 @@
           <div><strong>Chinese Physics Olympiad (CPhO)</strong><br><span class="muted">Silver Medal, National Finals</span></div>
           <span class="years">High school</span>
         </li>
-        <li>
-          <div><strong>National Olympiad in Informatics in Provinces (NOIP)</strong><br><span class="muted">Provincial First Prize</span></div>
-          <span class="years">Middle school</span>
-        </li>
       </ul>
     </section>
 
@@ -168,6 +178,7 @@
       <span>© 2026 Wei Xu</span>
       <span>Last updated Oct 2026</span>
     </footer>
+    </div>
   </main>
 
   <script>
